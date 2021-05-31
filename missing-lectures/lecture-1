@@ -1,0 +1,68 @@
+#!/bin/bash
+red=$'\e[1;31m'
+grn=$'\e[1;32m'
+blu=$'\e[1;34m'
+mag=$'\e[1;35m'
+cyn=$'\e[1;36m'
+white=$'\e[0m'
+
+exe() { echo $mag"\$ $@"$grn ; "$@" ; }
+
+echo $blu"0. Remove old dir if exists"
+echo $grn
+exe rm -r /tmp/missing
+
+echo $blu"\n1.Install bash ## skip"
+
+echo "\2. Create a new directory called missing under /tmp."
+echo $grn
+exe cd /tmp
+exe mkdir missing
+exe cd missing
+exe pwd
+
+echo $blu"\n3. Look up the touch program. The man program is your friend."
+echo $grn
+exe man touch | head -5
+
+echo $blu"\n4. Use touch to create a new file called semester in missing."
+echo $grn
+exe touch semester
+exe ls
+
+echo $blu"\n5. Write the following into that file, one line at a time:"
+echo "#!/bin/sh\ncurl --head --silent https://missing.csail.mit.edu"
+echo $grn
+echo 'echo '#!/bin/sh' > semester'
+echo '#!/bin/sh' > semester
+echo 'echo 'curl --head --silent https://missing.csail.mit.edu' >> semester'
+echo 'curl --head --silent https://missing.csail.mit.edu' >> semester
+exe cat semester
+
+echo $blu"\n6. Try to execute the file, i.e. type the path to the script (./semester) into your shell and press enter. Understand why it doesn’t work by consulting the output of ls (hint: look at the permission bits of the file)."
+echo $grn
+exe ./semester
+exe ls -l
+
+echo $blu"\n7. Run the command by explicitly starting the sh interpreter, and giving it the file semester as the first argument, i.e. sh semester. Why does this work, while ./semester didn’t?"
+echo $white
+exe sh semester
+echo $grn
+exe ls -l
+
+echo $blu"\n8. Look up the chmod program (e.g. use man chmod)."
+echo $grn
+exe man chmod | head -5
+
+echo $blu"\n9. Use chmod to make it possible to run the command ./semester rather than having to type sh semester. How does your shell know that the file is supposed to be interpreted using sh? See this page on the shebang line for more information."
+echo $grn
+exe chmod +x semester
+exe ls -l
+echo $white
+exe ./semester
+
+echo $blu"\n10. Use | and > to write the “last modified” date output by semester into a file called last-modified.txt in your home directory. (We will put under /tmp/missing for easy tear down.)"
+echo $grn
+exe ./semester | grep "last-modified" > last-modified.txt
+exe cat last-modified.txt
+
