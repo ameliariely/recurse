@@ -8,6 +8,10 @@ white=$'\e[0m'
 
 exe() { echo $mag"\$ "$*""$grn ; "$@" ; }
 
+### Here are my answers to the exercises of the first Missing Lecture.
+### I decided to learn a little about bash formatting.
+### Enjoy the colors :)
+
 echo $blu"0. Remove old dir if exists"
 exe rm -r /tmp/missing
 
