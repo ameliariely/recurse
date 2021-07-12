@@ -1,0 +1,10 @@
+- Can you change out color with any func other than echo?
+- Does a var get stored somewhere when you echo a control sequence?
+- Does echo -e still exist? I don't seem to need it. Also man echo only shows the -n arg.
+	- There is an external and "builtin" to the shell version of echo. 
+- How does zsh run bash scripts?
+	- if you put a shebang line declaring bash, zsh knows to run it with bash
+	- nearly all syntax from bash scripts works in zsh
+- Why am I using zsh? 
+	- It is now what comes pre-installed and updated on macOS. It's also supposedly has some advantages over sh and bash?
+	- seems like echo acts the same in zsh and bash
